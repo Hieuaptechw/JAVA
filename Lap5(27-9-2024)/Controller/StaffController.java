@@ -1,4 +1,5 @@
 package Controller;
+import Entity.Gender;
 import Entity.Staff;
 import Entity.Student;
 
@@ -26,11 +27,10 @@ public class StaffController {
                         .collect(Collectors.toList());
 
     }
-    public String SraffMaxPay(){
-        Optional<Staff> SraffMaxPay = Staff.stream()
-                .filter(s -> b.getGender().equals(Gender.Female))
+    public Optional<Staff> maxPayFeMale() {
+        return staffs.stream()
+                .filter(s -> s.getGender() == Gender.FEMALE)
                 .max(Comparator.comparing(Staff::getPay));
-        SraffMaxPay.ifPresent(System.out.println);
     }
 
 }
