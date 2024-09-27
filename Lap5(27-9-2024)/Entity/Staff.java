@@ -10,10 +10,11 @@ public class Staff extends Person {
         super();
     }
 
-    public Staff(String id,String school ,String name,double pay, String address) {
+    public Staff(String id,String school ,String name,Gender gender ,double pay, String address) {
         super(name, address);
         this.id = id;
         this.school = school;
+        this.gender = gender;
         this.pay = pay;
 
     }
@@ -52,9 +53,17 @@ public class Staff extends Person {
         super.setName(name);
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
-        return String.format("| %-5s | %-10s | %-10s | %-5.2f| %-8s |",
-                id, getName(), school,pay, super.getAddress());
+        return String.format("| %-5s | %-10s | %-5s | %-10s | %-5.2f| %-8s |",
+                id, getName(), school,gender,pay, super.getAddress());
     }
 }

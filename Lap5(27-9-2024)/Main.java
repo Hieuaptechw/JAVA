@@ -25,7 +25,6 @@ public class Main {
         students.forEach(System.out::println);
 
         StudentController st = new StudentController(students);
-        StaffController sc = new StaffController(staffs);
         Optional<Student> studentYoungest = st.getYoungest();
         System.out.println(studentYoungest);
 
@@ -35,15 +34,17 @@ public class Main {
 
         System.out.println("List Staff :");
         staffs.forEach(System.out::println);
-
+        StaffController sc = new StaffController(staffs);
 
         System.out.println("Staff By Name ");
         StaffController.StaffName("Hieu").forEach(System.out::println);
         System.out.println("Staff By ID ");
         StaffController.StaffID("2309").forEach(System.out::println);
-        StaffController staffController = new StaffController(staffs);
-        Optional<Staff> maxPayFemale = staffController.maxPayFeMale();
-        maxPayFemale.ifPresent(staff -> System.out.println("Female Staff with Highest Pay:\n" + staff));
 
+        Optional<Staff> maxPayFemale = sc.maxPayFeMale();
+        maxPayFemale.ifPresent(staff -> System.out.println("Female Staff with Highest Pay:\n" + staff));
+        System.out.println("Update By Name And ID:");
+        sc.updateStaffName("C2309","Hieudz");
+        staffs.forEach(System.out::println);
     }
 }

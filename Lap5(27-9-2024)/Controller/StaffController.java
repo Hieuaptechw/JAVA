@@ -32,5 +32,11 @@ public class StaffController {
                 .filter(s -> s.getGender() == Gender.FEMALE)
                 .max(Comparator.comparing(Staff::getPay));
     }
+    public void updateStaffName(String staffId, String newName) {
+        staffs.stream()
+                .filter(s -> s.getId().equals(staffId))
+                .findFirst()
+                .ifPresent(s -> s.setName(newName));
+    }
 
 }
