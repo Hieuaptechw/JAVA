@@ -47,6 +47,7 @@ public class Book {
 
     @Override
     public String toString() {
+        System.out.println("|------------------------------------------------------------------------------------");
         return String.format("| %-30s | %-20s | %-10.2f VNĐ | %-8d |",
                 name,
                 author.getName(),
