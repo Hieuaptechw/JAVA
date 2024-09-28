@@ -5,8 +5,7 @@ import Entity.Customer;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 public class AccountController {
     private static List<Account> accounts;
@@ -32,23 +31,25 @@ public class AccountController {
     public void sortAccountsByName() {
         accounts = accounts.stream()
                 .sorted(Comparator.comparing(Customer::getName))
-                .collect(Collectors.toList());
+                .toList();
         System.out.println("List Account Sort By Name");
         displayAccounts();
     }
     public void searchAccountByNameID(String id, String name) {
         int idSearch = Integer.parseInt(id);
-        Optional<Account> accountsearch = accounts.stream()
+        List<Account> accountSearchResults = accounts.stream()
                 .filter(a -> a.getId() == idSearch && a.getName().equalsIgnoreCase(name))
-                .findFirst();
+                .toList();
 
-        accountsearch.ifPresentOrElse(account ->
-                System.out.printf("Infor Account:\nID Account: " + account.getId() +
-                        "\nName Account: " + account.getName() +
-                        "\nGender Account: " + account.getGender() +
-                        "\nDiscount Account: " + account.getDiscount() + "%%" +
-                        "\nBalance Account: " + account.getBalance() + "\n"),
-        () -> System.out.println("Not Found Account !"));
+        accountSearchResults.forEach(account ->
+                System.out.printf("Infor Account:\nID Account: %d\nName Account: %s\nGender Account: %s\nDiscount Account: %d%%\nBalance Account: %.2f\n",
+                        account.getId(),
+                        account.getName(),
+                        account.getGender(),
+                        account.getDiscount(),
+                        account.getBalance())
+        );
+
     }
 
 

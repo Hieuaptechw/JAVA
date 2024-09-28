@@ -1,6 +1,5 @@
 package Controller;
 
-import Entity.Account;
 import Entity.Customer;
 import Entity.Gender;
 import Entity.Invoice;
@@ -8,7 +7,7 @@ import Entity.Invoice;
 import java.util.Comparator;
 import java.util.List;
 
-import java.util.stream.Collectors;
+
 
 public class InvoiceController {
     private static List<Invoice> invoices;
@@ -33,23 +32,22 @@ public class InvoiceController {
     public void sortInvoicesByName() {
         invoices = invoices.stream()
                 .sorted(Comparator.comparing(Customer::getName))
-                .collect(Collectors.toList());
+                .toList();
         System.out.println("List Invoices Sort By Name");
         displayInvoices();
     }
-    public static void invoicesInAugust() {
+    public static void saleFemale() {
         List<Invoice> femaleinvoice = invoices.stream()
                 .filter(i -> i.getGender() == Gender.FEMALE)
                 .filter(i -> i.getDatetime().getMonthValue() == 8)
                 .toList();
-        if(femaleinvoice.size()>0){
-            System.out.println("Sale for Female in August:");
-            System.out.println("-------------------------------------------------------------------------");
-            System.out.printf("| %-11s | %-10s | %-8s | %-8s | %-7s | %-10s |\n", "Id", "Name", "Discount","(More)", "Amount", "Date");
-            femaleinvoice.forEach(invoice -> {
-                int DiscountMore = 10;
-                int DiscountCustomer = invoice.getDiscount();
-                double AmountAfterDiscount = invoice.getAmount() * (1 - (DiscountCustomer + DiscountMore) / 100.0);
+        System.out.println("Sale for Female in August:");
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.printf("| %-11s | %-10s | %-8s | %-8s | %-7s | %-10s |\n", "Id", "Name", "Discount","(More)", "Amount", "Date");
+        femaleinvoice.forEach(invoice -> {
+            int DiscountMore = 10;
+            int DiscountCustomer = invoice.getDiscount();
+            double AmountAfterDiscount = invoice.getAmount() * (1 - (DiscountCustomer + DiscountMore) / 100.0);
                 System.out.println("-------------------------------------------------------------------------");
                 System.out.printf("| %-11d | %-10s | %7d%% | %7d%% | %-7.2f | %-10s |\n",
                         invoice.getId(),   invoice.getName(),
@@ -57,11 +55,9 @@ public class InvoiceController {
                         DiscountCustomer+DiscountMore,
                         AmountAfterDiscount,
                         invoice.getDatetime());
-            });
-            System.out.println("-------------------------------------------------------------------------");
-        }else{
-            System.out.println("No Invoice Found In August For FeMale !!!");
-        }
+        });
+        System.out.println("-------------------------------------------------------------------------");
+
 
     }
 

@@ -38,7 +38,7 @@ public class CustomerController {
     public void sortCustomersByName() {
         customers = customers.stream()
                 .sorted(Comparator.comparing(Customer::getName))
-                .collect(Collectors.toList());
+                .toList();
         System.out.println("List Customers Sort By Name");
         displayCustomers();
     }

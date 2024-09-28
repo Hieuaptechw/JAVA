@@ -54,6 +54,6 @@ public class Main {
         ct.inforCustomerValid();
         ct.inforCustomerNotValid();
         //d
-        iv.invoicesInAugust();
+        iv.saleFemale();
     }
 }
