@@ -24,51 +24,42 @@ public class Main {
         Optional<Invoice> maxAmount = invoices.stream()
                 .max(Comparator.comparing(Invoice::getAmount));
 
-        maxAmount.ifPresent(invoice -> {
+        maxAmount.stream().forEach(invoice -> {
             Customer customer = invoice.getCustomer();
-            double afterdiscount = invoice.getAmount() * (1 - customer.getDiscount() / 100.0);
+            double afterDiscount = invoice.getAmount() * (1 - customer.getDiscount() / 100.0);
             System.out.printf("Info Customer Amount MAX =>| %d | %s | Amount: %.2f$\n",
                     customer.getId(),
                     customer.getName(),
-                    afterdiscount);
+                    afterDiscount);
         });
+
         Optional<Customer> minDiscountCustomer = customers.stream()
                 .min(Comparator.comparing(Customer::getDiscount));
-
-        minDiscountCustomer.ifPresent(customer -> {
+        minDiscountCustomer.stream().forEach(customer -> {
             System.out.printf("Info Customer Discount MIN =>| %d | %s | Discount:  %d%%\n",
                     customer.getId(),
                     customer.getName(),
                     customer.getDiscount());
         });
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Invoice ID or Customer Name to search: ");
+        System.out.print("Enter Invoice ID or Customer Name to search: ");
         String keysearch = scanner.nextLine();
 
-        if (keysearch.matches("\\d+")) {
+        try {
             int invoiceId = Integer.parseInt(keysearch);
-            boolean found = false;
-            for (Invoice invoice : invoices) {
-                if (invoice.getId() == invoiceId) {
-                    System.out.println("Found Invoice: " + invoice);
-                    found = true;
-                    break;
-                }
+            if (invoiceId > 0) {
+                List<Invoice> foundCustomerID = invoices.stream()
+                        .filter(invoice -> invoice.getId() == invoiceId)
+                        .toList();
+                foundCustomerID.forEach(customer -> System.out.println(customer));
+            } else {
+                System.out.println("InvoiceId not < 0");
             }
-            if (!found) {
-                System.out.println("Invoice ID not found.");
-            }
-        } else {
-            boolean check = false;
-            for (Invoice invoice : invoices) {
-                if (invoice.getCustomer().getName().equalsIgnoreCase(keysearch)) {
-                    System.out.println("Found Invoice: " + invoice);
-                    check = true;
-                }
-            }
-            if (!check) {
-                System.out.println("Customer Name not found.");
-            }
+        } catch (NumberFormatException e) {
+            List<Invoice> foundCustomerName = invoices.stream()
+                    .filter(invoice -> invoice.getCustomer().getName().toLowerCase().contains(keysearch.toLowerCase()))
+                    .toList();
+            foundCustomerName.forEach(customer -> System.out.println(customer));
         }
 
 
