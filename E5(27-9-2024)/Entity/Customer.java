@@ -1,5 +1,5 @@
 package Entity;
-
+import Entity.Account;
 public class Customer {
     private int id;
     private String name;
@@ -48,8 +48,10 @@ public class Customer {
         this.discount = discount;
     }
 
+
     @Override
     public String toString() {
-        return String.format("| %-5d | %-20s |%-5s | %-8d |", id, name, gender,discount);
+
+        return String.format("| %-11d | %-10s | %-10s | %-8d |", id, name, gender,discount);
     }
 }
