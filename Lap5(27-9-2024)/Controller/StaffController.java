@@ -24,7 +24,7 @@ public class StaffController {
         return
                 staffs.stream()
                         .filter(s->s.getId().toLowerCase().contains(sfaffid.toLowerCase()))
-                        .collect(Collectors.toList());
+                        .findFirst();
 
     }
     public Optional<Staff> maxPayFeMale() {
