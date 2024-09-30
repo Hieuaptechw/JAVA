@@ -35,8 +35,7 @@ public class StaffController {
     public void updateStaffName(String staffId, String newName) {
         staffs.stream()
                 .filter(s -> s.getId().equals(staffId))
-                .findFirst()
-                .ifPresent(s -> s.setName(newName));
+                .forEach(s -> s.setName(newName));
     }
 
 }
