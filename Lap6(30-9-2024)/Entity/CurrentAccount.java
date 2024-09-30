@@ -1,8 +1,8 @@
 package Entity;
 
-public class SavingAccount extends BankAccount {
+public class CurrentAccount extends BankAccount {
 
-    public SavingAccount(String accountNumber, double balance) {
+    public CurrentAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
     }
 
@@ -10,20 +10,20 @@ public class SavingAccount extends BankAccount {
     public double getBalance() {
         return super.getBalance();
     }
+
+    @Override
+    public void setBalance(double balance) {
+        super.setBalance(balance);
+    }
     @Override
     public String getAccountNumber() {
         return super.getAccountNumber();
     }
     @Override
-    public void setBalance(double balance) {
-        super.setBalance(balance);
-    }
-
-    @Override
     public void deposit(double amount) {
         if (amount > 0) {
             this.setBalance(getBalance() + amount);
-            System.out.println("==> Deposited of $" + amount + " successful ! Current balance: $"+this.getBalance());
+            System.out.println("==> Deposited of $" + amount + " successful .Current balance: $"+this.getBalance());
             System.out.println("---------------------------------------------------------------------------------");
         } else {
             System.out.println("==> Cannot deposit $ " + amount);
@@ -35,7 +35,7 @@ public class SavingAccount extends BankAccount {
     public void withdraw(double amount) {
         if (getBalance() >= amount) {
             this.setBalance(getBalance() - amount);
-            System.out.println("==> Withdraw of $" + amount + " successful ! Current balance: $"+this.getBalance());
+            System.out.println("==> Withdraw of $" + amount + " successful .Current balance: $"+this.getBalance());
             System.out.println("---------------------------------------------------------------------------------");
         } else {
             System.out.println("==> Insufficient funds Withdrawal failed");

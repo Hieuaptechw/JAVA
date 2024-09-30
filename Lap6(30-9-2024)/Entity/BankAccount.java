@@ -33,8 +33,8 @@ public abstract class BankAccount {
 
     @Override
     public String toString() {
-            return String.format("| %-11s | %-10.2f |",
-                 accountNumber, balance);
+        return String.format("| %-11s | %-10.2f |",
+                accountNumber, balance);
     }
 
 }
