@@ -13,14 +13,14 @@ public class StaffController {
     public StaffController(List<Staff> staffs) {
         StaffController.staffs = staffs;
     }
-    public static List <Staff> StaffName(String staffname){
+    public static List <Staff> staffName(String staffname){
         return
                 staffs.stream()
                         .filter(s->s.getName().toLowerCase().contains(staffname.toLowerCase()))
                         .collect(Collectors.toList());
 
     }
-    public static List <Staff> StaffID(String sfaffid){
+    public static List <Staff> staffID(String sfaffid){
         return
                 staffs.stream()
                         .filter(s->s.getId().toLowerCase().contains(sfaffid.toLowerCase()))
