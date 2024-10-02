@@ -18,8 +18,8 @@ public class Main {
         System.out.print("Name Staff: ");
         String staffName = scanner.nextLine();
         GetPaidController gp = new GetPaidController(staff);
-        Optional<String> paymentInfo = gp.getPaid(staffName);
-        System.out.println(paymentInfo.get());
+        Optional<String> paid = gp.getPaid(staffName);
+        System.out.println(paid.get());
         gp.displayStafff(staffName);
 
 
