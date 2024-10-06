@@ -2,15 +2,15 @@ package Entity;
 
 import java.time.LocalDate;
 
-public class Invoice extends Customer {
+public class Invoice {
     private int id;
     private double amount;
     private Customer customer;
     private LocalDate datetime;
 
-    public Invoice(int id,String name, Gender gender, int discount, double amount, LocalDate datetime) {
-        super(id,name,gender, discount);
+    public Invoice(int id, Customer customer, double amount, LocalDate datetime) {
         this.id = id;
+        this.customer = customer;
         this.amount = amount;
         this.datetime = datetime;
     }
@@ -31,19 +31,10 @@ public class Invoice extends Customer {
         this.customer = customer;
     }
 
-
     public double getAmount() {
         return amount;
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-    @Override
-    public Gender getGender(){
-        return super.getGender();
-    }
     public void setAmount(double amount) {
         this.amount = amount;
     }
@@ -55,19 +46,22 @@ public class Invoice extends Customer {
     public void setDatetime(LocalDate datetime) {
         this.datetime = datetime;
     }
+
     public int getCustomerId() {
-        return getId();
+        return customer.getId();
     }
 
     public double getAmountAfterDiscount() {
-        return amount * (1 - getDiscount() / 100.0);
+        return amount * (1 - customer.getDiscount() / 100.0);
     }
+
     public boolean checkMonth(int month) {
-        return (datetime.getMonthValue()==month);
+        return (datetime.getMonthValue() == month);
     }
+
     @Override
     public String toString() {
         return String.format("| %-11d | %-10s | %-8d | %-8.2f | %-10s |",
-                id, getName(), getDiscount(), getAmountAfterDiscount(), datetime);
+                id, customer.getName(), customer.getDiscount(), getAmountAfterDiscount(), datetime);
     }
 }

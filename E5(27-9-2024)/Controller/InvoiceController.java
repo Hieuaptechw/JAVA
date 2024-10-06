@@ -1,8 +1,11 @@
 package Controller;
 
+import Entity.Account;
 import Entity.Customer;
 import Entity.Gender;
 import Entity.Invoice;
+import Service.AccountService;
+import Service.InvoiceService;
 
 import java.util.Comparator;
 import java.util.List;
@@ -10,57 +13,47 @@ import java.util.List;
 
 
 public class InvoiceController {
-    private static List<Invoice> invoices;
-    public InvoiceController(List<Invoice> invoices) {
-        InvoiceController.invoices = invoices;
-    }
-    public void displayInvoices() {
-        System.out.println("---------------------------------------------------------------");
-        System.out.printf("| %-11s | %-10s | %-5s | %-8s | %-10s |\n", "Id", "Name", "Discount", "Amount", "Date");
+    private InvoiceService is;
+    private List<Invoice> invoices;
 
-        for (Invoice invoice : invoices) {
-            System.out.println("---------------------------------------------------------------");
-            System.out.printf("| %-11d | %-10s | %-8d | %-8.2f | %-10s |\n",
-                    invoice.getId(),
-                    invoice.getName(),
-                    invoice.getDiscount(),
-                    invoice.getAmountAfterDiscount(),
-                    invoice.getDatetime());
+    public InvoiceController(InvoiceService is) {
+        this.is = is;
+    }
+
+    public List<Invoice> sortByName() {
+        invoices = is.sortByName();
+        System.out.println("Danh sách hoa đơn sắp xếp theo tên:");
+        invoices.forEach(invoice -> System.out.println(invoice));
+        return invoices;
+    }
+
+    public Invoice getInvoiceById(int id) {
+        Invoice  invoice = is.getById(id);
+        if (invoice != null) {
+            System.out.println("Thông tin hoá đơn với ID " + id + ": " + invoice);
+        } else {
+            System.out.println("Không tìm thấy hoá đơn với ID: " + id);
         }
-        System.out.println("---------------------------------------------------------------");
-    }
-    public void sortInvoicesByName() {
-        invoices = invoices.stream()
-                .sorted(Comparator.comparing(Customer::getName))
-                .toList();
-        System.out.println("List Invoices Sort By Name");
-        displayInvoices();
-    }
-    public static void saleFemale() {
-        List<Invoice> femaleinvoice = invoices.stream()
-                .filter(i -> i.getGender() == Gender.FEMALE)
-                .filter(i -> i.getDatetime().getMonthValue() == 8)
-                .toList();
-        System.out.println("Sale for Female in August:");
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.printf("| %-11s | %-10s | %-8s | %-8s | %-7s | %-10s |\n", "Id", "Name", "Discount","(More)", "Amount", "Date");
-        femaleinvoice.forEach(invoice -> {
-            int DiscountMore = 10;
-            int DiscountCustomer = invoice.getDiscount();
-            double AmountAfterDiscount = invoice.getAmount() * (1 - (DiscountCustomer + DiscountMore) / 100.0);
-                System.out.println("-------------------------------------------------------------------------");
-                System.out.printf("| %-11d | %-10s | %7d%% | %7d%% | %-7.2f | %-10s |\n",
-                        invoice.getId(),   invoice.getName(),
-                        invoice.getDiscount(),
-                        DiscountCustomer+DiscountMore,
-                        AmountAfterDiscount,
-                        invoice.getDatetime());
-        });
-        System.out.println("-------------------------------------------------------------------------");
-
-
+        return invoice;
     }
 
-
+    public List<Invoice> getInvoicesByName(String keyword) {
+       invoices =is.getByName(keyword);
+        if (invoices.size()>0) {
+            System.out.println("Thông tin hoá đơn với tên :" + keyword);
+            invoices.forEach(invoice -> System.out.println(invoice));
+        } else {
+            System.out.println("Không tìm hoa đơn với tên: " + keyword);
+        }
+        return invoices;
+    }
+    public List<Invoice> saleFemale(){
+        if (invoices.size()>0) {
+            System.out.println("Danh sách hoá đơn trong tháng 8 mua bởi nữ:");
+            return is.saleFemale();
+        } else {
+            return null;
+        }
+    }
 
 }
