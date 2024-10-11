@@ -11,10 +11,12 @@ public class Customer {
         this.id = id;
         this.name = name;
         this.cS = cS;
-        if (!cS.customerValidate(name, id)) {
-            throw new IllegalArgumentException("Invalid customer details.");
+        String validationResult = cS.customerValidate(name, id);
+        if (!"Validation successful".equals(validationResult)) {
+            throw new IllegalArgumentException(validationResult);
         }
     }
+
 
     public int getId() {
         return id;

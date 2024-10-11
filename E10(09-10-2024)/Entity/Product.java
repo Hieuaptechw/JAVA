@@ -14,8 +14,9 @@ public class Product {
         this.name = name;
         this.quantity = quantity;
         this.pS = pS;
-        if (!pS.productValidate(id, name, quantity)) {
-            throw new IllegalArgumentException("Invalid product details.");
+        String validationResult = pS.productValidate(id,name,quantity);
+        if (!"Validation successful".equals(validationResult)) {
+            throw new IllegalArgumentException(validationResult);
         }
     }
 

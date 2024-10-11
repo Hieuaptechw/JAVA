@@ -16,8 +16,9 @@ public class Order {
         this.id = id;
         this.cus_id = cus_id;
         this.datetime = datetime;
-        if (!oS.orderValidate(id)) {
-            throw new IllegalArgumentException("Invalid Order.");
+        String validationResult = oS.orderValidate(id);
+        if (!"Validation successful".equals(validationResult)) {
+            throw new IllegalArgumentException(validationResult);
         }
     }
 

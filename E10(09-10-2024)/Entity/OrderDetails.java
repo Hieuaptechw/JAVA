@@ -1,5 +1,6 @@
 package Entity;
 
+import Exceptions.InvalidQuantityException;
 import Services.OrderDetailService;
 
 import java.util.Locale;
@@ -20,11 +21,12 @@ public class OrderDetails {
         this.quantity = quantity;
         this.status = status;
         this.oDS = oDS;
-
-        if (!oDS.orderDetailValidate(quantity)) {
-            throw new IllegalArgumentException("Invalid product details.");
+        String validationResult = oDS.orderDetailValidate(quantity);
+        if (!"Validation successful".equals(validationResult)) {
+            throw new IllegalArgumentException(validationResult);
         }
     }
+
 
     public int getId() {
         return id;

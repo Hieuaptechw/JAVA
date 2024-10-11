@@ -17,23 +17,36 @@ public class ProductService {
         this.pV = new ProductValidator();
     }
 
-    public boolean productValidate(String id, String name, int quantity) {
-        if (!pV.idValidate(id)) {
-            throw new InvalidProducIdException("Invalid product ID format");
+    public String productValidate(String id, String name, int quantity) {
+        try {
+            if (!pV.idValidate(id)) {
+                throw new InvalidProducIdException("Invalid product ID format");
+            }
+            if (!pV.nameValidate(name)) {
+                throw new InvalidProductNameException("Invalid product name format");
+            }
+            if (!pV.quantityValidate(quantity)) {
+                throw new InvalidQuantityException("Quantity must be a positive integer");
+            }
+            return "Validation successful";
+        } catch (InvalidProducIdException | InvalidProductNameException | InvalidQuantityException e) {
+            return e.getMessage();
+        } catch (Exception e) {
+            return e.getMessage();
         }
-        if (!pV.nameValidate(name)) {
-            throw new InvalidProductNameException("Invalid product name format");
-        }
-        if (!pV.quantityValidate(quantity)) {
-            throw new InvalidQuantityException("Quantity must be a positive integer");
-        }
-       return true;
     }
 
+
+
     public boolean findProductById(String id) {
-        return products.stream()
-                .filter(product -> product.getId().equals(id))
-                .findFirst()
-                .isPresent();
+        try {
+            return products.stream()
+                    .filter(product -> product.getId().equals(id))
+                    .findFirst()
+                    .isPresent();
+        } catch (Exception e) {
+            return false;
+        }
     }
+
 }

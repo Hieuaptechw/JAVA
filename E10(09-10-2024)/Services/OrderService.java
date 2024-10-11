@@ -17,27 +17,48 @@ public class OrderService {
     private List<Customer> customers;
     private List<OrderDetails> orderDetails;
     private OrderValidator oV;
-    public OrderService(List<Order> order,List<Product> product,List<Customer> customer,List<OrderDetails> orderDetails) {
-        this.orders = new ArrayList<>();
-        this.orderDetails = new ArrayList<>();
-        this.products = new ArrayList<>();
-        this.customers = new ArrayList<>();
+
+    public OrderService(List<Order> order, List<Product> product, List<Customer> customer, List<OrderDetails> orderDetails) {
+        this.orders = new ArrayList<>(order);
+        this.orderDetails = new ArrayList<>(orderDetails);
+        this.products = new ArrayList<>(product);
+        this.customers = new ArrayList<>(customer);
         this.oV = new OrderValidator();
     }
-    public boolean orderValidate(String id) {
-        if(!oV.idValidate(id)){
-            throw new InvalidOrderIdException("Invalid Order ID Format");
+
+    public String orderValidate(String id) {
+        try {
+            if (!oV.idValidate(id)) {
+                throw new InvalidOrderIdException("Invalid Order ID Format");
+            }
+            return "Validation successful";
+        } catch (InvalidOrderIdException e) {
+            return e.getMessage();
+        } catch (Exception e) {
+            return e.getMessage();
         }
-        return true;
-    };
+    }
+
+
     public boolean isStockAvailable(String productId, int quantityNeeded) {
-        return products.stream()
-                .filter(product -> product.getId().equals(productId))
-                .findFirst()
-                .map(product -> product.getQuantity() >= quantityNeeded)
-                .orElse(false);
+        try {
+            return products.stream()
+                    .filter(product -> product.getId().equals(productId))
+                    .findFirst()
+                    .map(product -> product.getQuantity() >= quantityNeeded)
+                    .orElse(false);
+        } catch (Exception e) {
+            return false;
+        }
     }
-    public void insertDetails(Order order) {
-        orders.add(order);
+
+    public boolean insertDetails(Order order) {
+        try {
+            orders.add(order);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
+
 }

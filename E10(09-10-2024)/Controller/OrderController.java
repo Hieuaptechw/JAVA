@@ -28,9 +28,8 @@ public class OrderController {
 
     public void insertOrder(Order order) {
         orderDetailService.insertOrderDetails(order, orderDetails);
-        orders.forEach(orders -> System.out.println(orders.toString()));
+        orders.forEach(o -> System.out.println(o.toString()));
         orderDetails.forEach(orderDetail -> System.out.println(orderDetail.toString()));
     }
-
 
 }

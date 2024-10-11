@@ -19,13 +19,19 @@ public class OrderDetailController {
         this.products = products;
         this.orderDetails = orderDetails;
     }
-    public void updateOrderDetailStatus(int orderDetailId, Status status) {
-        System.out.println("OrderDetail Update");
-        orderDetailService.updateStatus(orderDetails, orderDetailId, status);
+
+    public void updateOrderDetailStatus(int id, Status status) {
+        orderDetailService.updateStatus(orderDetails, id, status);
+        displayAllOrderDetails();
     }
 
+
     public void displayAllOrderDetails() {
-        orderDetails.forEach(orderDetail -> System.out.println(orderDetail.toString())); // In ra thông tin của từng OrderDetail
+        if (orderDetails.isEmpty()) {
+            System.out.println("No order details found.");
+        } else {
+            orderDetails.forEach(orderDetail -> System.out.println(orderDetail.toString()));
+        }
     }
 
 }

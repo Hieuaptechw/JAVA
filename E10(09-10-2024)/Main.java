@@ -1,10 +1,10 @@
 import Controller.OrderDetailController;
+import Controller.OrderController;
 import Entity.*;
 import Services.CustomerService;
-import Services.OrderService;
-import Controller.OrderController;
-import Services.ProductService;
 import Services.OrderDetailService;
+import Services.OrderService;
+import Services.ProductService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ public class Main {
 
         customers.add(new Customer(1, "Hieu", cS));
         customers.add(new Customer(2, "Mai", cS));
+
         Order order = new Order("ORDPM12345678", 1, LocalDate.now(), oS);
         OrderDetails orderDetail = new OrderDetails(1, order.getId(), products.get(0).getId(), 1, Status.CANCELLED, oDS);
         orderDetailsList.add(orderDetail);
@@ -34,12 +35,9 @@ public class Main {
         OrderController oC = new OrderController(oS, oDS, orders, products, customers, orderDetailsList);
         OrderDetailController oDC = new OrderDetailController(oDS, orders, customers, products, orderDetailsList);
 
-        try {
-            oC.insertOrder(order);
-            oDC.updateOrderDetailStatus(1,Status.COMPLETED);
-            oDC.displayAllOrderDetails();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+
+        oC.insertOrder(order);
+        oDC.updateOrderDetailStatus(1, Status.COMPLETED);
+
     }
 }

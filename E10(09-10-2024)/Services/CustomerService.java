@@ -14,21 +14,33 @@ public class CustomerService {
         this.customers = customers;
         this.cV = new CustomerValidator();
     }
-    public boolean customerValidate(String name,int id) {
-        if(!cV.nameValidate(name)){
-            throw new InvalidCustomerNameException("Invalid Customer Name Format");
+    public String customerValidate(String name, int id) {
+        try {
+            if (!cV.nameValidate(name)) {
+                throw new InvalidCustomerNameException("Invalid Customer Name Format");
+            }
+            if (!cV.idValidate(id)) {
+                throw new InvalidCustomerIdException("Invalid Customer ID Format");
+            }
+            return "Validation successful";
+        } catch (InvalidCustomerNameException | InvalidCustomerIdException e) {
+            return e.getMessage();
         }
-        if(!cV.idValidate(id)){
-            throw new InvalidCustomerIdException("Invalid Customer ID Format");
-        }
-        return true;
     }
+
+
     public boolean findCustomerById(int id) {
-        return customers.stream()
-                .filter(c -> c.getId() == id)
-                .findFirst()
-                .isPresent();
+        try {
+            return customers.stream()
+                    .filter(c -> c.getId() == id)
+                    .findFirst()
+                    .isPresent();
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
+
+
 
 
 
