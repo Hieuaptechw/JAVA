@@ -1,50 +1,48 @@
 package Service;
 
 import Entity.Customer;
-import Entity.Order;
 import Entity.Product;
 
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OrderService {
-    private List<Order> orders;
+public class CustomerService {
+    private List<Customer> customers;
     private String fileIn;
     private String fileOut;
 
-    public OrderService(String fileIn, String fileOut) {
+    public CustomerService(String fileIn, String fileOut) {
         this.fileIn = fileIn;
         this.fileOut = fileOut;
     }
 
-    public List<Order> readFile() {
-        List<Order> orders = new ArrayList<>();
+    public List<Customer> readFile() {
+        List<Customer> customers = new ArrayList<Customer>();
         try{
             BufferedReader reader   = new BufferedReader(new FileReader(fileIn));
-            String lineData;
-            while ((lineData = reader.readLine()) != null){
-                Order order = new Order();
-                if(!lineData.isEmpty()){
-                    String[] parts = lineData.split(";");
-                    order.setId(Integer.parseInt(parts[0]));
-                    order.setCustomerId(Integer.parseInt(parts[1]));
-                    order.setDateTime(LocalDateTime.parse(parts[2]));
-                }
-                orders.add(order);
-
+        String lineData;
+        while ((lineData = reader.readLine()) != null){
+            Customer customer = new Customer();
+            if(!lineData.isEmpty()){
+                String[] parts = lineData.split(";");
+                customer.setId(Integer.parseInt(String.valueOf(parts[0])));
+                customer.setCustomerCode(String.valueOf(parts[1]));
+                customer.setName(String.valueOf(parts[2]));
             }
+            customers.add(customer);
+
+        }
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
-        return orders;
+        return customers;
     }
-    public void writeFile(List<Order> orderList) {
+    public void writeFile(List<Customer> customerList) {
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter(fileOut));
-            orderList.stream()
+            customerList.stream()
                     .peek(p->{
                         try{
                             String lineWriter = p.toString(";");
@@ -60,5 +58,4 @@ public class OrderService {
             System.out.println(e.getMessage());
         }
     }
-
 }

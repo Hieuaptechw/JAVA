@@ -3,18 +3,16 @@ package Service;
 import Entity.Customer;
 import Entity.Product;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ProductService {
     private List<Product> products ;
     private String fileOut;
     private String fileIn;
 
-    public ProductService( String fileOut,String fileIn) {
+    public ProductService( String fileIn,String fileOut) {
         this.fileOut = fileOut;
         this.fileIn = fileIn;
     }
@@ -39,5 +37,24 @@ public class ProductService {
             System.out.println(e.getMessage());
         }
         return productList;
+    }
+    public void writeFile(List<Product> productList) {
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileOut));
+            productList.stream()
+                    .peek(p->{
+                        try{
+                            String lineWriter = p.toString(";");
+                            bw.write(lineWriter);
+                            bw.newLine();
+                            bw.flush();
+
+                        }catch(IOException e){
+                            System.out.println(e.getMessage());
+                        }
+                    }).collect(Collectors.toSet());
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
