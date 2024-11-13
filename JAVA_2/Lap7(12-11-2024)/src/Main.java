@@ -1,7 +1,9 @@
+import Controller.AnalysisProductController;
 import Entity.AnalysisProduct;
 import Service.AnalysisProductService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,10 +15,9 @@ public class Main {
         String dataFileIn = sysPath.replace("/","\\")   +"/Database/analysisproduct.in.txt";
         String dataFileOut = sysPath.replace("/","\\")   +"/Database/analysisproduct.out.txt";
         AnalysisProductService aPS = new AnalysisProductService(dataFileIn,dataFileOut);
-        List<AnalysisProduct>  analysisProducts = aPS.readFile();
-        analysisProducts.forEach(a-> System.out.println(a.toString(";")));
-        aPS.writeFile(analysisProducts);
-        List<AnalysisProduct>  test = aPS.productPopularValiabel(1,LocalDate.of(2024,1,1),LocalDate.of(2024,1,30),analysisProducts);
-        test.forEach(p->p.toString("1"));
+        AnalysisProductController aC = new AnalysisProductController(aPS);
+        List<AnalysisProduct> analysisProducts = aC.readFile();
+        aC.analysisProduct(analysisProducts);
+        aC.writeFile(analysisProducts);
     }
 }
