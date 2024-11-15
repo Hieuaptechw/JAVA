@@ -1,23 +1,21 @@
-import Controller.AnalysisProductController;
-import Entity.AnalysisProduct;
-import Service.AnalysisProductService;
+import Entity.CRStatistics;
+import Entity.StatisticsView;
+import Service.CRStatisticsService;
+import Service.FileService;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         String sysPath = System.getProperty("user.dir");
-        String dataFileIn = sysPath.replace("/","\\")   +"/Database/analysisproduct.in.txt";
-        String dataFileOut = sysPath.replace("/","\\")   +"/Database/analysisproduct.out.txt";
-        AnalysisProductService aPS = new AnalysisProductService(dataFileIn,dataFileOut);
-        AnalysisProductController aC = new AnalysisProductController(aPS);
-        List<AnalysisProduct> analysisProducts = aC.readFile();
-        aC.analysisProduct(analysisProducts);
-        aC.writeFile(analysisProducts);
+        String dataFileIn = sysPath.replace("/","\\")   +"/Database/product.in.txt";
+        String dataFileOut = sysPath.replace("/","\\")   +"/Database/product.out.txt";
+        System.out.println(dataFileIn);
+        FileService fileService = new FileService(dataFileIn,dataFileOut);
+        List<StatisticsView> statisticsViews = fileService.readFileStatistics(dataFileIn);
+        CRStatisticsService crStatisticsService = new CRStatisticsService(statisticsViews);
+        List<CRStatistics> crStatistics = new ArrayList<>(crStatisticsService.dataCRS().values());
+        fileService.writeFileStatistics(dataFileOut,crStatistics);
     }
 }
