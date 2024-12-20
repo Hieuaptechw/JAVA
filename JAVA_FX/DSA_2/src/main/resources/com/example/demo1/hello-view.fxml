@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="556.0" prefWidth="791.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.StudentController">
+    <center>
+        <TabPane fx:id="tabPane" prefHeight="427.0" prefWidth="785.0" styleClass="tab-content">
+            <tabs>
+                <Tab closable="false" text="Add Student">
+                    <content>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="111.0" layoutY="29.0" text="Id" />
+                                <TextField fx:id="txtId" layoutX="195.0" layoutY="25.0" />
+                                <Label layoutX="111.0" layoutY="71.0" text="Name" />
+                                <TextField fx:id="txtName" layoutX="195.0" layoutY="67.0" />
+                                <Label layoutX="111.0" layoutY="127.0" text="Age" />
+                                <TextField fx:id="txtAge" layoutX="195.0" layoutY="123.0" />
+                                <Label layoutX="111.0" layoutY="213.0" text="Birthday" />
+                                <TextField fx:id="txtBirthday" layoutX="195.0" layoutY="209.0" />
+                                <Label layoutX="111.0" layoutY="170.0" text="Gender" />
+                                <RadioButton fx:id="radioMale" layoutX="195.0" layoutY="170.0" mnemonicParsing="false" text="Male" />
+                                <RadioButton fx:id="radioFemale" layoutX="279.0" layoutY="170.0" mnemonicParsing="false" text="Female" />
+                                <Button fx:id="btnAdd" layoutX="257.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleAddStudent" prefHeight="34.0" prefWidth="64.0" text="Add" />
+                        <ComboBox fx:id="comboSort1" layoutX="97.0" layoutY="271.0" onAction="#handleSort" prefHeight="25.0" prefWidth="94.0" promptText="Save">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Queue" />
+                                 <String fx:value="Stack" />
+                                 <String fx:value="Binary Tree" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                            </children>
+                        </Pane>
+                    </content>
+                </Tab>
+                <Tab closable="false" text="List Students">
+                    <content>
+                        <VBox>
+                     <Pane prefHeight="105.0" prefWidth="791.0">
+                        <children>
+                                  <ComboBox fx:id="comboSort" layoutX="564.0" layoutY="8.0" onAction="#handleSort" prefHeight="25.0" prefWidth="185.0" promptText="Sort">
+                                      <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                              <String fx:value="Bubble sort by Name" />
+                                              <String fx:value="Bubble sort by Birthday" />
+                                              <String fx:value="Bubble sort by Age" />
+                                              <String fx:value="Insertion sort by Name" />
+                                              <String fx:value="Insertion sort by Birthday" />
+                                              <String fx:value="Insertion sort by Age" />
+                                              <String fx:value="Selection sort by Name" />
+                                              <String fx:value="Selection sort by Birthday" />
+                                              <String fx:value="Selection sort by Age" />
+                                          </FXCollections>
+                                      </items>
+                                  </ComboBox>
+                           <TextField layoutX="34.0" layoutY="8.0" text="Search..." />
+                           <RadioButton layoutX="213.0" layoutY="12.0" mnemonicParsing="false" text="Queue " />
+                           <RadioButton layoutX="286.0" layoutY="12.0" mnemonicParsing="false" text="Stack" />
+                           <RadioButton layoutX="355.0" layoutY="12.0" mnemonicParsing="false" text="Binary Tree" />
+
+                        </children>
+                     </Pane>
+                            <TableView fx:id="studentTable" prefHeight="551.0" prefWidth="791.0">
+                                <columns>
+                                    <TableColumn fx:id="idColumn" prefWidth="160.79998475313187" text="Id" />
+                                    <TableColumn fx:id="nameColumn" minWidth="0.0" prefWidth="173.6000518798828" text="Name" />
+                                    <TableColumn fx:id="ageColumn" prefWidth="177.59994506835938" text="Age" />
+                                    <TableColumn fx:id="genderColumn" minWidth="0.0" prefWidth="131.99993896484375" text="Gender" />
+                                    <TableColumn fx:id="birthdayColumn" prefWidth="130.39996337890625" text="Birthday" />
+                                </columns>
+                                <VBox.margin>
+                                    <Insets />
+                                </VBox.margin>
+                            </TableView>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
