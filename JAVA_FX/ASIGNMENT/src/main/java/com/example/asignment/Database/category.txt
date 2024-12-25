@@ -1,0 +1,9 @@
+4;Health
+5;Income
+6;Transportation
+7;Utilities
+8;Shopping
+9;Travel
+10;Savings
+11;Investments
+12;Miscellaneous
