@@ -1,0 +1,33 @@
+
+.label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+}
+
+.table-column {
+    -fx-font-weight: bold;
+}
+
+.alert {
+    -fx-background-color: #fff;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+}
