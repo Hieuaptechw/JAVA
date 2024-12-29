@@ -1,96 +1,96 @@
-/* Định nghĩa các kiểu cơ bản cho toàn bộ ứng dụng */
-.root {
-    -fx-font-family: "Arial";
-    -fx-font-size: 14px;
-    -fx-base: #f0f0f0;
-    -fx-background-color: #ffffff;
-}
+/*!* Định nghĩa các kiểu cơ bản cho toàn bộ ứng dụng *!*/
+/*.root {*/
+/*    -fx-font-family: "Arial";*/
+/*    -fx-font-size: 14px;*/
+/*    -fx-base: #f0f0f0;*/
+/*    -fx-background-color: #ffffff;*/
+/*}*/
 
-/* TabPane */
-.tab-pane {
-    -fx-background-color: #ffffff;
-    -fx-padding: 10;
-}
+/*!* TabPane *!*/
+/*.tab-pane {*/
+/*    -fx-background-color: #ffffff;*/
+/*    -fx-padding: 10;*/
+/*}*/
 
-/* Tab */
-.tab {
-    -fx-font-weight: bold;
-    -fx-text-fill: #ffffff; /* Màu chữ */
-    -fx-font-size: 14px; /* Kích thước chữ */
-}
-
-
-/* Các thành phần Label */
-.label {
-    -fx-text-fill: #333333;
-}
-
-/* Các thành phần TextField */
-.text-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5;
-    -fx-padding: 5;
-}
-
-/* Các thành phần Button */
-.button {
-    /*-fx-background-color: #007bff;*/
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-border-radius: 5;
-    -fx-padding: 5;
-}
-
-.button:hover {
-    -fx-background-color: #0056b3;
-    -fx-cursor: hand;
-}
-
-/* Các thành phần TableView */
-.table-view {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5;
-
-}
-
-/* Các hàng trong bảng */
-.table-row-cell {
-    -fx-background-color: #ffffff;
-    -fx-font-size:14px;
-}
-
-/* Các hàng khi di chuột qua */
-.table-row-cell:selected {
-    -fx-background-color: #007bff;
-    -fx-text-fill: white;
-}
-
-/* DatePicker */
-.date-picker {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5;
-    -fx-padding: 5;
-}
+/*!* Tab *!*/
+/*.tab {*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-text-fill: #ffffff; !* Màu chữ *!*/
+/*    -fx-font-size: 14px; !* Kích thước chữ *!*/
+/*}*/
 
 
-.vbox {
-    -fx-spacing: 10;
-}
+/*!* Các thành phần Label *!*/
+/*.label {*/
+/*    -fx-text-fill: #333333;*/
+/*}*/
 
-.hbox {
-    -fx-spacing: 10;
-}
-.header {
-    -fx-background-color: rgba(91, 69, 195, 0.27); /* Màu nền cho header */
-    -fx-padding: 10px; /* Khoảng cách trong header */
-    -fx-alignment: CENTER; /* Căn giữa nội dung trong HBox */
-}
+/*!* Các thành phần TextField *!*/
+/*.text-field {*/
+/*    -fx-background-color: #ffffff;*/
+/*    -fx-border-color: #cccccc;*/
+/*    -fx-border-radius: 5;*/
+/*    -fx-padding: 5;*/
+/*}*/
 
-.header-label {
-    -fx-font-size: 24px; /* Kích thước chữ */
-    -fx-font-weight: bold; /* Chữ đậm */
-    -fx-text-fill: rgba(0, 0, 0, 0.51); /* Màu chữ trắng */
-}
+/*!* Các thành phần Button *!*/
+/*.button {*/
+/*    !*-fx-background-color: #007bff;*!*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-border-radius: 5;*/
+/*    -fx-padding: 5;*/
+/*}*/
+
+/*.button:hover {*/
+/*    -fx-background-color: #0056b3;*/
+/*    -fx-cursor: hand;*/
+/*}*/
+
+/*!* Các thành phần TableView *!*/
+/*.table-view {*/
+/*    -fx-background-color: #ffffff;*/
+/*    -fx-border-color: #cccccc;*/
+/*    -fx-border-radius: 5Q;*/
+
+/*}*/
+
+/*!* Các hàng trong bảng *!*/
+/*.table-row-cell {*/
+/*    -fx-background-color: #ffffff;*/
+/*    -fx-font-size:14px;*/
+/*}*/
+
+/*!* Các hàng khi di chuột qua *!*/
+/*.table-row-cell:selected {*/
+/*    -fx-background-color: #007bff;*/
+/*    -fx-text-fill: white;*/
+/*}*/
+
+/*!* DatePicker *!*/
+/*.date-picker {*/
+/*    -fx-background-color: #ffffff;*/
+/*    -fx-border-color: #cccccc;*/
+/*    -fx-border-radius: 5;*/
+/*    -fx-padding: 5;*/
+/*}*/
+
+
+/*.vbox {*/
+/*    -fx-spacing: 10;*/
+/*}*/
+
+/*.hbox {*/
+/*    -fx-spacing: 10;*/
+/*}*/
+/*.header {*/
+/*    -fx-background-color: rgba(91, 69, 195, 0.27); !* Màu nền cho header *!*/
+/*    -fx-padding: 10px; !* Khoảng cách trong header *!*/
+/*    -fx-alignment: CENTER; !* Căn giữa nội dung trong HBox *!*/
+/*}*/
+
+/*.header-label {*/
+/*    -fx-font-size: 24px; !* Kích thước chữ *!*/
+/*    -fx-font-weight: bold; !* Chữ đậm *!*/
+/*    -fx-text-fill: rgba(0, 0, 0, 0.51); !* Màu chữ trắng *!*/
+/*}*/
