@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="378.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.asignment.Controller.EditController">
+
+    <!-- Tiêu đề -->
+    <Text layoutX="158.0" layoutY="27.0" styleClass="title-text" text="Edit Budget" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="14.05078125">
+      <font>
+         <Font name="System Bold" size="17.0" />
+      </font></Text>
+
+    <!-- Label và DatePicker cho ngày -->
+    <Label styleClass="label" text="Date:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="80" />
+    <DatePicker fx:id="txtDate" styleClass="text-field" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="80" />
+
+    <!-- Label và MenuButton cho category -->
+    <Label styleClass="label" text="Category:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="140" />
+    <MenuButton fx:id="categoryMenuButton" prefWidth="200" styleClass="menu-button" text="Select Category" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="140" />
+
+    <!-- Label và TextField cho Amount -->
+    <Label styleClass="label" text="Amount:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="200" />
+    <TextField fx:id="txtAmount" prefWidth="200" styleClass="text-field" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="200" />
+
+    <!-- Label và TextField cho Description -->
+    <Label styleClass="label" text="Description:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="260" />
+    <TextField fx:id="txtDescription" prefWidth="200" styleClass="text-field" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="260" />
+
+    <!-- Các nút Save và Cancel -->
+    <HBox alignment="center" spacing="20" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="320">
+        <Button fx:id="saveButton" onAction="#handleSaveButtonAction" prefWidth="80" styleClass="button" text="Save" />
+        <Button fx:id="cancelButton" onAction="#handleCancelButtonAction" prefWidth="80" styleClass="button" text="Cancel" />
+    </HBox>
+
+</AnchorPane>

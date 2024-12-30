@@ -1,0 +1,9 @@
+1;Salary
+2;Freelance
+3;Business
+4;Savings
+5;Loan
+6;Gift
+7;Investment Returns
+8;Rental Income
+9;Miscellaneous
