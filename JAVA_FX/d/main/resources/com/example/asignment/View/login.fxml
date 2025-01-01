@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" prefHeight="250.0" prefWidth="300.0" vgap="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.asignment.Controller.LoginController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <Label fx:id="labelUser" text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+    <Label fx:id="labelPass" text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+    <Label fx:id="errorLabel" text="" GridPane.columnSpan="2" GridPane.rowIndex="2" style="-fx-text-fill: red;" />
+
+    <Button fx:id="btnLogin" onAction="#handleLogin" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <MenuButton fx:id="languageMenu" text="English" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <items>
+            <MenuItem onAction="#setLanguageToEnglish" text="English" />
+            <MenuItem onAction="#setLanguageToVietnamese" text="Vietnamese" />
+        </items>
+    </MenuButton>
+
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+</GridPane>

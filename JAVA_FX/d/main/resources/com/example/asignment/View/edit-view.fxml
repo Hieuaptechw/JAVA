@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="498.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.asignment.Controller.EditController">
+    <Text layoutX="158.0" layoutY="27.0" styleClass="title-text" text="Edit Budget" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="14.05078125">
+      <font>
+         <Font name="System Bold" size="17.0" />
+      </font></Text>
+    <Label styleClass="label" text="Date:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="80" />
+    <DatePicker fx:id="txtDate" styleClass="text-field" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="80" />
+    <Label styleClass="label" text="Category:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="140" />
+    <MenuButton fx:id="categoryMenuButton" prefWidth="200" styleClass="menu-button" text="Select Category" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="140" />
+    <Label styleClass="label" text="Amount:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="200" />
+    <TextField fx:id="txtAmount" prefWidth="200" styleClass="text-field" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="200" />
+    <Label styleClass="label" text="Description:" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="260" />
+    <TextArea fx:id="txtDescription" prefHeight="64.0" prefWidth="200" styleClass="text-field" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="260" />
+    <HBox alignment="center" spacing="20" AnchorPane.leftAnchor="120" AnchorPane.topAnchor="320" />
+     <Button fx:id="saveButton" layoutX="130.0" layoutY="378.0" onAction="#handleSaveButtonAction" prefWidth="80" style="-fx-background-color: #47B881;" styleClass="button" text="Save" textFill="WHITE" />
+     <Button fx:id="cancelButton" layoutX="230.0" layoutY="378.0" onAction="#handleCancelButtonAction" prefWidth="80" style="-fx-background-color: #FF6B6B;" styleClass="button" text="Cancel" textFill="WHITE" />
+
+</AnchorPane>

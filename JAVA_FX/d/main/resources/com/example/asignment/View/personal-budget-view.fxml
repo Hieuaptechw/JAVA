@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="1005.0" stylesheets="@../Asset/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.asignment.Controller.MainController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="homebtn" style="-fx-text-fill: white;" text="Home">
+               <content>
+                  <AnchorPane fx:id="homeTabContent" />
+               </content>
+          </Tab>
+          <Tab text=" Manage Expenses">
+               <content>
+                  <AnchorPane fx:id="expensesTabContent" />
+               </content>
+          </Tab>
+            <Tab text=" Manage Income">
+               <content>
+                  <AnchorPane fx:id="incomeTabContent" />
+               </content>
+            </Tab>
+            <Tab text="Setting">
+               <content>
+                  <AnchorPane fx:id="settingTabContent" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="43.0" prefWidth="771.0" spacing="10.0" style="-fx-background-color: #66cc66;">
+         <Pane prefHeight="43.0" prefWidth="1002.0">
+            <children>
+               <Label layoutX="439.0" layoutY="6.0" styleClass="header-label" text="Personal Budget" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="21.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+      </HBox>
+   </top>
+
+</BorderPane>

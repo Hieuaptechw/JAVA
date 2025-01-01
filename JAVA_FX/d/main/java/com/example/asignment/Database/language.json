@@ -1,0 +1,18 @@
+{
+  "en": {
+    "username": "Username:",
+    "password": "Password:",
+    "login": "Login",
+    "language": "Language :",
+    "login_error": "Invalid username or password!",
+    "dashboard_title": "Personal Budget Dashboard"
+  },
+  "vi": {
+    "username": "Tên đăng nhập:",
+    "password": "Mật khẩu:",
+    "login": "Đăng nhập",
+    "language": "Ngôn ngữ :",
+    "login_error": "Sai tên đăng nhập hoặc mật khẩu!",
+    "dashboard_title": "Bảng điều khiển ngân sách cá nhân"
+  }
+}

@@ -1,0 +1,5 @@
+0, Income, 2.0, 2025-01-08, Expense, 23
+1, Health, 5.5, 2025-01-09, Expense, 15
+2, Utilities, 3.2, 2025-01-10, Expense, 12
+3, Shopping, 10.0, 2025-01-11, Expense, 50
+4, Investments, 7.8, 2025-01-12, Expense, 30

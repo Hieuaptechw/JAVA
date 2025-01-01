@@ -1,0 +1,5 @@
+0, Salary, 2312.0, 2025-01-02, Income, 1312
+1, Freelance, 30.0, 2025-01-03, Income, 2000
+2, Savings, 100.0, 2025-01-04, Income, 1000
+3, Gift, 30.0, 2025-01-05, Income, 2500
+4, Salary, 28.0, 2025-01-06, Income, 1800
